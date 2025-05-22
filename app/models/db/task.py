@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 from app.models.db import task
 from .base import Base
-from .db_tools import DBTools  # outil de base pour session + commit
 
 class Task(Base):
     __tablename__ = 'tasks'

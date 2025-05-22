@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from sqlalchemy import create_engine
 from app.config import URL_DB
-from app.models import Base
+from app.models.db import Base
 from sqlalchemy.orm import sessionmaker
 from app.models.services.menu import Menu
 from app.init_db import session, db_connected

@@ -1,13 +1,31 @@
 # app/menu.py
-from app.models.services.task import task
-from app.models.services.user import user
+
+from app.models.services import task
+from app.models.services import user
+from app.models.services.user import (
+    create_user,
+    get_all_users,
+    get_user_by_email,
+    update_user,
+    delete_user
+)
+from app.models.services.task import (
+    create_task,
+    get_all_tasks,
+    get_tasks_by_user,
+    update_task,
+    delete_task
+)
+
+
 
 class Menu:
     def __init__(self, session):
         self.session = session
 
     def affichage(self):
-        while True:
+        running = True
+        while running:
             print("\n=== MENU PRINCIPAL ===")
             print("1. Créer un utilisateur")
             print("2. Afficher tous les utilisateurs")
@@ -24,39 +42,28 @@ class Menu:
             choix = input("Votre choix : ")
 
             if choix == "1":
-                print("→ Appel à la fonction : créer un utilisateur")
-                # on appellera service_user.create_user(self.session)
-
+                create_user(self.session)
             elif choix == "2":
-                print("→ Appel à la fonction : afficher tous les utilisateurs")
-
+                get_all_users(self.session)
             elif choix == "3":
-                print("→ Appel à la fonction : rechercher un utilisateur")
-
+                get_user_by_email(self.session)
             elif choix == "4":
-                print("→ Appel à la fonction : modifier un utilisateur")
-
+                update_user(self.session)
             elif choix == "5":
-                print("→ Appel à la fonction : supprimer un utilisateur")
-
+                delete_user(self.session)
             elif choix == "6":
-                print("→ Appel à la fonction : créer une tâche")
-
+                create_task(self.session)
             elif choix == "7":
-                print("→ Appel à la fonction : afficher toutes les tâches")
-
+                get_all_tasks(self.session)
             elif choix == "8":
-                print("→ Appel à la fonction : afficher les tâches d’un utilisateur")
-
+                get_tasks_by_user(self.session)
             elif choix == "9":
-                print("→ Appel à la fonction : modifier une tâche")
-
+                update_task(self.session)
             elif choix == "10":
-                print("→ Appel à la fonction : supprimer une tâche")
-
+                delete_task(self.session)
             elif choix == "11":
                 print("👋 Au revoir !")
-                break
-
+                running = False  # <-- propre et clair
             else:
                 print("❌ Option invalide. Veuillez réessayer.")
+

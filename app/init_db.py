@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from app.config import URL_DB
-from app.models import Base
+from app.models.db import Base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
 from app.models.services.menu import Menu
