@@ -1,15 +1,15 @@
 # app/main.py
 # -*- coding: utf-8 -*-
-
-
 from sqlalchemy import create_engine
 from app.config import URL_DB
 from app.models import Base
+from sqlalchemy.orm import sessionmaker
+from app.models.services.menu import Menu
+from init_db import session, db_connected
 
-def init_db():
-    engine = create_engine(URL_DB)
-    Base.metadata.create_all(engine)
-    print("✅ Base de donnees et tables creees avec succes.")
 
-if __name__ == "__main__":
-    init_db()
+if db_connected:
+    menu = Menu(session)
+    menu.affichage()
+else:
+    print("❌ La base de données n'est pas connectée.")
