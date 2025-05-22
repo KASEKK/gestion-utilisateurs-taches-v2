@@ -1,4 +1,6 @@
 # app/menu.py
+from app.models.services.task import task
+from app.models.services.user import user
 
 class Menu:
     def __init__(self, session):

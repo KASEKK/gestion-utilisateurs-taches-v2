@@ -5,7 +5,7 @@ from app.config import URL_DB
 from app.models import Base
 from sqlalchemy.orm import sessionmaker
 from app.models.services.menu import Menu
-from init_db import session, db_connected
+from app.init_db import session, db_connected
 
 
 if db_connected:
